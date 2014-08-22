@@ -30,13 +30,13 @@ func main() {
 	for time := range ticker.C {
 		csvWriter.Write([]string{
 			strconv.FormatFloat(time.Sub(startTime).Seconds(), 'f', 3, 64),
-			strconv.FormatFloat(getTemperature(), 'f', 3, 64),
+			strconv.FormatFloat(Temperature(), 'f', 3, 64),
 		})
 		csvWriter.Flush()
 	}
 }
 
-func getTemperature() float64 {
+func Temperature() float64 {
 	file, err := os.Open(tempSrc)
 	if err != nil {
 		log.Fatal(err)
