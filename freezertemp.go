@@ -15,8 +15,6 @@ const interval = 3
 var startTime time.Time
 
 func main() {
-	startTime = time.Now()
-
 	logfile, err := os.Create(logFile)
 	if err != nil {
 		log.Fatal(err)
@@ -28,6 +26,7 @@ func main() {
 	csvWriter.Flush()
 
 	ticker := time.NewTicker(time.Second * interval)
+	startTime = time.Now()
 	for time := range ticker.C {
 		csvWriter.Write([]string{
 			strconv.FormatFloat(time.Sub(startTime).Seconds(), 'f', 3, 64),
