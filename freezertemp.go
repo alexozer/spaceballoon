@@ -1,4 +1,4 @@
-package main
+package spaceballoon
 
 import (
 	"encoding/csv"
@@ -14,7 +14,7 @@ const interval = 3
 
 var startTime time.Time
 
-func main() {
+func freezerTest() {
 	logfile, err := os.Create(logFile)
 	if err != nil {
 		log.Fatal(err)
