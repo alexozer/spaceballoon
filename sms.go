@@ -62,20 +62,14 @@ func (d *Dongle) SendSMS(message []string) error {
 	if totalLen > maxSMSLength {
 		return errors.New("SMS too long")
 	}
-
-	// Setting SMS mode
 	if err := d.write(smsTextMode); err != nil {
 		return err
 	}
-
-	// Setting phone number
 	if err := d.write(fmt.Sprintf(smsSetPhoneNum, d.phoneNum)); err != nil {
 		return err
 	}
 
-	// Sending SMS
 	for i, line := range message {
-		// Writing line
 		var err error
 		if i < len(message)-1 {
 			err = d.write(line + "\r\n")
@@ -87,7 +81,6 @@ func (d *Dongle) SendSMS(message []string) error {
 		}
 	}
 
-	// Finishing
 	if err := d.write(smsEndBody); err != nil {
 		return err
 	}
