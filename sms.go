@@ -110,34 +110,3 @@ func (d *Dongle) write(text string) error {
 
 	return nil
 }
-
-/*func (d *Dongle) read(lenLastMsg int) (text string, err error) {
-	bytes := make([]byte, 80)
-	n, err := d.port.Read(bytes)
-	if err != nil {
-		return
-	}
-
-	return string(bytes[:n]), nil
-}*/
-
-/*func (d *Dongle) checkOK(lenLastMsg int) error {
-	msg, err := d.read(lenLastMsg)
-	fmt.Println("yo")
-	if err != nil {
-		return err
-	}
-
-	var containsOK bool
-	for _, line := range strings.Split(msg, "\r\n") {
-		if line == "OK" {
-			containsOK = true
-			break
-		}
-	}
-	if !containsOK {
-		return errors.New("OK not returned")
-	}
-
-	return nil
-}*/
