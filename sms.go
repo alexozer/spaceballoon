@@ -104,9 +104,5 @@ func (d *Dongle) write(text string) error {
 
 	bytes := make([]byte, len(text)+60)
 	_, err = d.port.Read(bytes)
-	if err != nil {
-		return err
-	}
-
-	return nil
+	return err
 }
